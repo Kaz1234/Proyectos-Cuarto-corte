@@ -1,11 +1,11 @@
 object frmNewForm: TfrmNewForm
-  Left = 24
-  Top = -8
+  Left = 339
+  Top = 49
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cifrado de cesar grafico'
   ClientHeight = 311
-  ClientWidth = 455
+  ClientWidth = 450
   Color = clAppWorkSpace
   OldCreateOrder = True
   PopupMenu = DesignerPopup.Owner
@@ -32,11 +32,17 @@ object frmNewForm: TfrmNewForm
   PixelsPerInch = 96
   TextHeight = 15
   object WxButton1: TWxButton
-    Left = 195
-    Top = 9
+    Left = 194
+    Top = 7
     Width = 81
     Height = 25
     Caption = 'Cifrar texto'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
     Wx_BKColor = clBlack
     Wx_ButtonStyle = []
@@ -47,10 +53,13 @@ object frmNewForm: TfrmNewForm
       'EVT_BUTTON:OnClick'
       'EVT_UPDATE_UI:OnUpdateUI')
     Wx_FGColor = clBlack
-    Wx_GeneralStyle = []
+    Wx_GeneralStyle = [wxNO_BORDER]
     Wx_Hidden = False
     Wx_IDName = 'ID_WXBUTTON1'
     Wx_IDValue = 1011
+    InvisibleBGColorString = 'STD:LIME GREEN'
+    InvisibleFGColorString = 'CUS:255,255,255'
+    Color = clLime
     Wx_PaneCaption = 'WxButton1'
     Wx_PaneName = 'WxButton1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -74,6 +83,12 @@ object frmNewForm: TfrmNewForm
     Width = 108
     Height = 25
     Caption = 'Descifrar texto'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 2
     Wx_BKColor = clBlack
     Wx_ButtonStyle = []
@@ -84,10 +99,13 @@ object frmNewForm: TfrmNewForm
       'EVT_BUTTON:OnClick'
       'EVT_UPDATE_UI:OnUpdateUI')
     Wx_FGColor = clBlack
-    Wx_GeneralStyle = []
+    Wx_GeneralStyle = [wxNO_BORDER]
     Wx_Hidden = False
     Wx_IDName = 'ID_WXBUTTON2'
     Wx_IDValue = 1012
+    InvisibleBGColorString = 'STD:BLUE'
+    InvisibleFGColorString = 'CUS:255,255,255'
+    Color = clBlue
     Wx_PaneCaption = 'WxButton2'
     Wx_PaneName = 'WxButton2_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -210,11 +228,17 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_Y_Pos = 0
   end
   object WxStaticText1: TWxStaticText
-    Left = 52
-    Top = 12
-    Width = 94
+    Left = 41
+    Top = 11
+    Width = 110
     Height = 19
-    Caption = 'N'#176' Desplazaiento'
+    Caption = 'N'#176' Desplazamiento'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 6
     Wx_BGColor = clBlack
     Wx_Class = 'wxStaticText'
@@ -243,8 +267,8 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_Y_Pos = 0
   end
   object WxMenuBar1: TWxMenuBar
-    Left = 162
-    Top = 307
+    Left = 422
+    Top = 285
     Width = 28
     Height = 27
     TabOrder = 0

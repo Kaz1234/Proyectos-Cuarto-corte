@@ -26,10 +26,10 @@
 //Header Include Start and Header Include End.
 //wxDev-C++ designer will remove them. Add custom headers after the block.
 ////Header Include Start
+#include <wx/menu.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 #include <wx/button.h>
-#include <wx/menu.h>
 ////Header Include End
 
 ////Dialog Style Start
@@ -52,13 +52,13 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 		//GUI Control Declaration Start and GUI Control Declaration End.
 		//wxDev-C++ will remove them. Add custom code after the block.
 		////GUI Control Declaration Start
+		wxMenuBar *WxMenuBar1;
 		wxStaticText *WxStaticText1;
 		wxTextCtrl *WxMemo2;
 		wxTextCtrl *WxMemo1;
 		wxTextCtrl *WxEdit1;
 		wxButton *WxButton2;
 		wxButton *WxButton1;
-		wxMenuBar *WxMenuBar1;
 		////GUI Control Declaration End
 		
 	private:
@@ -69,12 +69,6 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 		enum
 		{
 			////GUI Enum Control ID Start
-			ID_WXSTATICTEXT1 = 1017,
-			ID_WXMEMO2 = 1016,
-			ID_WXMEMO1 = 1015,
-			ID_WXEDIT1 = 1014,
-			ID_WXBUTTON2 = 1012,
-			ID_WXBUTTON1 = 1011,
 			ID_MNU_ARCHIVO_1001 = 1001,
 			ID_MNU_ABRIR_1002 = 1002,
 			ID_MNU_GUARDAR_1004 = 1004,
@@ -82,6 +76,12 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 			ID_MNU_GUARDARCOMO____1008 = 1008,
 			ID_MNU_SALIR_1010 = 1010,
 			
+			ID_WXSTATICTEXT1 = 1017,
+			ID_WXMEMO2 = 1016,
+			ID_WXMEMO1 = 1015,
+			ID_WXEDIT1 = 1014,
+			ID_WXBUTTON2 = 1012,
+			ID_WXBUTTON1 = 1011,
 			////GUI Enum Control ID End
 			ID_DUMMY_VALUE_ //don't remove this value unless you have other enum values
 		};
