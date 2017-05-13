@@ -36,7 +36,7 @@
 #undef Cifrado_de_cesar_graficoFrm_STYLE
 #define Cifrado_de_cesar_graficoFrm_STYLE wxCAPTION | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX
 ////Dialog Style End
-
+#include <fstream>
 class Cifrado_de_cesar_graficoFrm : public wxFrame
 {
 	private:
@@ -46,6 +46,10 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 		void Mnusalir1010Click(wxCommandEvent& event);
 		Cifrado_de_cesar_graficoFrm(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("Cifrado de cesar grafico"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, long style = Cifrado_de_cesar_graficoFrm_STYLE);
 		virtual ~Cifrado_de_cesar_graficoFrm();
+		void WxopenClick(wxCommandEvent& event);
+		void WxButton1Click(wxCommandEvent& event);
+		void WxButton2Click(wxCommandEvent& event);
+		void WxopenClick0(wxCommandEvent& event);
 		
 	private:
 		//Do not add custom control declarations between
@@ -54,9 +58,9 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 		////GUI Control Declaration Start
 		wxMenuBar *WxMenuBar1;
 		wxStaticText *WxStaticText1;
-		wxTextCtrl *WxMemo2;
-		wxTextCtrl *WxMemo1;
-		wxTextCtrl *WxEdit1;
+		wxTextCtrl *PDescifrado;
+		wxTextCtrl *PCifrado;
+		wxTextCtrl *Numero;
 		wxButton *WxButton2;
 		wxButton *WxButton1;
 		////GUI Control Declaration End
@@ -66,20 +70,21 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 		//change your old form code that are based on the #define control IDs.
 		//#defines may replace a numeric value for the enum names.
 		//Try copy and pasting the below block in your old form header files.
-		enum
+		wxString codigo, temporal;
+		int numero;
+        enum
 		{
 			////GUI Enum Control ID Start
 			ID_MNU_ARCHIVO_1001 = 1001,
-			ID_MNU_ABRIR_1002 = 1002,
 			ID_MNU_GUARDAR_1004 = 1004,
 			ID_MNU_GUARDARARCHIVO_1006 = 1006,
 			ID_MNU_GUARDARCOMO____1008 = 1008,
 			ID_MNU_SALIR_1010 = 1010,
 			
 			ID_WXSTATICTEXT1 = 1017,
-			ID_WXMEMO2 = 1016,
-			ID_WXMEMO1 = 1015,
-			ID_WXEDIT1 = 1014,
+			ID_PDESCIFRADO = 1016,
+			ID_PCIFRADO = 1015,
+			ID_NUMERO = 1014,
 			ID_WXBUTTON2 = 1012,
 			ID_WXBUTTON1 = 1011,
 			////GUI Enum Control ID End
@@ -89,6 +94,8 @@ class Cifrado_de_cesar_graficoFrm : public wxFrame
 	private:
 		void OnClose(wxCloseEvent& event);
 		void CreateGUIControls();
+		
+        
 };
 
 #endif

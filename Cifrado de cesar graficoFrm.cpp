@@ -27,7 +27,10 @@ BEGIN_EVENT_TABLE(Cifrado_de_cesar_graficoFrm,wxFrame)
 	////Manual Code End
 	
 	EVT_CLOSE(Cifrado_de_cesar_graficoFrm::OnClose)
+	EVT_MENU(wxID_OPEN, Cifrado_de_cesar_graficoFrm::WxopenClick0)
 	EVT_MENU(ID_MNU_SALIR_1010, Cifrado_de_cesar_graficoFrm::Mnusalir1010Click)
+	EVT_BUTTON(ID_WXBUTTON2,Cifrado_de_cesar_graficoFrm::WxButton2Click)
+	EVT_BUTTON(ID_WXBUTTON1,Cifrado_de_cesar_graficoFrm::WxButton1Click)
 END_EVENT_TABLE()
 ////Event Table End
 
@@ -51,7 +54,7 @@ void Cifrado_de_cesar_graficoFrm::CreateGUIControls()
 
 	WxMenuBar1 = new wxMenuBar();
 	wxMenu *ID_MNU_ARCHIVO_1001_Mnu_Obj = new wxMenu();
-	ID_MNU_ARCHIVO_1001_Mnu_Obj->Append(ID_MNU_ABRIR_1002, _("Abrir"), _(""), wxITEM_NORMAL);
+	ID_MNU_ARCHIVO_1001_Mnu_Obj->Append(wxID_OPEN, _("Abrir"), _(""), wxITEM_NORMAL);
 	ID_MNU_ARCHIVO_1001_Mnu_Obj->Append(wxID_STATIC, _("Nuevo"), _(""), wxITEM_NORMAL);
 	
 	wxMenu *ID_MNU_GUARDAR_1004_Mnu_Obj = new wxMenu();
@@ -66,17 +69,20 @@ void Cifrado_de_cesar_graficoFrm::CreateGUIControls()
 	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("N° Desplazamiento"), wxPoint(41, 11), wxDefaultSize, 0, _("WxStaticText1"));
 	WxStaticText1->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false));
 
-	WxMemo2 = new wxTextCtrl(this, ID_WXMEMO2, wxEmptyString, wxPoint(67, 168), wxSize(325, 121), wxTE_MULTILINE, wxDefaultValidator, _("WxMemo2"));
-	WxMemo2->SetMaxLength(0);
-	WxMemo2->SetFocus();
-	WxMemo2->SetInsertionPointEnd();
+	PDescifrado = new wxTextCtrl(this, ID_PDESCIFRADO, wxEmptyString, wxPoint(67, 169), wxSize(325, 121), wxTE_MULTILINE, wxDefaultValidator, _("PDescifrado"));
+	PDescifrado->SetMaxLength(0);
+	PDescifrado->SetFocus();
+	PDescifrado->SetInsertionPointEnd();
+	PDescifrado->SetForegroundColour(wxColour(0,0,0));
 
-	WxMemo1 = new wxTextCtrl(this, ID_WXMEMO1, wxEmptyString, wxPoint(67, 40), wxSize(325, 114), wxTE_MULTILINE, wxDefaultValidator, _("WxMemo1"));
-	WxMemo1->SetMaxLength(0);
-	WxMemo1->SetFocus();
-	WxMemo1->SetInsertionPointEnd();
+	PCifrado = new wxTextCtrl(this, ID_PCIFRADO, wxEmptyString, wxPoint(67, 43), wxSize(325, 114), wxTE_MULTILINE, wxDefaultValidator, _("PCifrado"));
+	PCifrado->SetMaxLength(0);
+	PCifrado->SetFocus();
+	PCifrado->SetInsertionPointEnd();
+	PCifrado->SetForegroundColour(wxColour(0,0,0));
+	PCifrado->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, _("Segoe UI Semibold")));
 
-	WxEdit1 = new wxTextCtrl(this, ID_WXEDIT1, _(""), wxPoint(158, 11), wxSize(21, 19), 0, wxDefaultValidator, _("WxEdit1"));
+	Numero = new wxTextCtrl(this, ID_NUMERO, _(""), wxPoint(158, 11), wxSize(21, 19), 0, wxDefaultValidator, _("Numero"));
 
 	WxButton2 = new wxButton(this, ID_WXBUTTON2, _("Descifrar texto"), wxPoint(290, 8), wxSize(108, 25), wxNO_BORDER, wxDefaultValidator, _("WxButton2"));
 	WxButton2->SetForegroundColour(wxColour(255,255,255));
@@ -90,7 +96,7 @@ void Cifrado_de_cesar_graficoFrm::CreateGUIControls()
 
 	SetTitle(_("Cifrado de cesar grafico"));
 	SetIcon(wxNullIcon);
-	SetSize(339,49,466,349);
+	SetSize(217,88,466,349);
 	Center();
 	
 	////GUI Items Creation End
@@ -101,10 +107,54 @@ void Cifrado_de_cesar_graficoFrm::OnClose(wxCloseEvent& event)
 	Destroy();
 }
 
-/*
- * Mnusalir1010Click
- */
 void Cifrado_de_cesar_graficoFrm::Mnusalir1010Click(wxCommandEvent& event)
 {
 	Close();
+}
+
+void Codificar(int numero, wxString & codigo){
+    
+    for(int i = 0; i < codigo.length(); i++){ 
+        if(codigo[i] >= 'A' && codigo[i] <= 'Z'){ 
+           	if((codigo[i], + numero)>'Z'){ 
+              	codigo[i] = 'A' - 'Z' + (codigo[i], + numero-1); 
+            }else if((codigo[i], + numero<'A')){ 
+                codigo[i] = 'Z' - 'A' + (codigo[i], + numero+1); 
+            }else{ 
+			 codigo[i] = numero; 
+            	} 
+        } 
+    }
+}
+
+void Cifrado_de_cesar_graficoFrm::WxButton1Click(wxCommandEvent& event)
+{
+    std::ofstream Arch("Archivito.txt");
+    fflush(stdin);
+    
+    if(Arch.is_open()){
+        
+        Arch<<codigo;
+    Codificar(numero, codigo);
+    }
+}              
+void decodificar(int numero, wxString & codigo){ 
+	
+    for(int i = 0; i < codigo.length(); i++){ 
+        if(codigo[i] >= 'A' && codigo[i] <= 'Z'){ 
+            if((codigo[i], - numero)>'Z'){ 
+                    codigo[i] = 'A' - 'Z' + (codigo[i], - numero+1); 
+            }else if((codigo[i], - numero)<'A'){ 
+                codigo[i] = 'Z' - 'A' + (codigo[i], - numero-1); 
+            }else{ 
+        		codigo[i] = numero; 
+            } 
+        } 
+    }
+}
+
+
+void Cifrado_de_cesar_graficoFrm::WxButton2Click(wxCommandEvent& event)
+{
+	decodificar(numero, codigo);
 }
