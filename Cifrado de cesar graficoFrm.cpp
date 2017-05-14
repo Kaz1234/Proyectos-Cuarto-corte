@@ -27,10 +27,13 @@ BEGIN_EVENT_TABLE(Cifrado_de_cesar_graficoFrm,wxFrame)
 	////Manual Code End
 	
 	EVT_CLOSE(Cifrado_de_cesar_graficoFrm::OnClose)
-	EVT_MENU(wxID_OPEN, Cifrado_de_cesar_graficoFrm::WxopenClick0)
 	EVT_MENU(ID_MNU_SALIR_1010, Cifrado_de_cesar_graficoFrm::Mnusalir1010Click)
-	EVT_BUTTON(ID_WXBUTTON2,Cifrado_de_cesar_graficoFrm::WxButton2Click)
-	EVT_BUTTON(ID_WXBUTTON1,Cifrado_de_cesar_graficoFrm::WxButton1Click)
+	
+	EVT_TEXT(ID_PCIFRADO,Cifrado_de_cesar_graficoFrm::PcifradoUpdated)
+	
+	EVT_TEXT(ID_WXNUMER,Cifrado_de_cesar_graficoFrm::wxNumerUpdated)
+	EVT_BUTTON(ID_BT_DECO,Cifrado_de_cesar_graficoFrm::Bt_DecoClick)
+	EVT_BUTTON(ID_BT_CODIFICAR,Cifrado_de_cesar_graficoFrm::Bt_CodificarClick)
 END_EVENT_TABLE()
 ////Event Table End
 
@@ -54,7 +57,7 @@ void Cifrado_de_cesar_graficoFrm::CreateGUIControls()
 
 	WxMenuBar1 = new wxMenuBar();
 	wxMenu *ID_MNU_ARCHIVO_1001_Mnu_Obj = new wxMenu();
-	ID_MNU_ARCHIVO_1001_Mnu_Obj->Append(wxID_OPEN, _("Abrir"), _(""), wxITEM_NORMAL);
+	ID_MNU_ARCHIVO_1001_Mnu_Obj->Append(ID_MNU_ABRIR_1002, _("Abrir"), _(""), wxITEM_NORMAL);
 	ID_MNU_ARCHIVO_1001_Mnu_Obj->Append(wxID_STATIC, _("Nuevo"), _(""), wxITEM_NORMAL);
 	
 	wxMenu *ID_MNU_GUARDAR_1004_Mnu_Obj = new wxMenu();
@@ -66,37 +69,47 @@ void Cifrado_de_cesar_graficoFrm::CreateGUIControls()
 	WxMenuBar1->Append(ID_MNU_ARCHIVO_1001_Mnu_Obj, _("Archivo"));
 	SetMenuBar(WxMenuBar1);
 
-	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("N° Desplazamiento"), wxPoint(41, 11), wxDefaultSize, 0, _("WxStaticText1"));
-	WxStaticText1->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false));
+	WxStaticText4 = new wxStaticText(this, ID_WXSTATICTEXT4, _("Texto Cifrado"), wxPoint(32, 375), wxDefaultSize, 0, _("WxStaticText4"));
+	WxStaticText4->SetForegroundColour(wxColour(0,0,255));
+	WxStaticText4->SetFont(wxFont(14, wxSWISS, wxNORMAL, wxBOLD, false));
 
-	PDescifrado = new wxTextCtrl(this, ID_PDESCIFRADO, wxEmptyString, wxPoint(67, 169), wxSize(325, 121), wxTE_MULTILINE, wxDefaultValidator, _("PDescifrado"));
-	PDescifrado->SetMaxLength(0);
-	PDescifrado->SetFocus();
-	PDescifrado->SetInsertionPointEnd();
-	PDescifrado->SetForegroundColour(wxColour(0,0,0));
+	WxStaticText3 = new wxStaticText(this, ID_WXSTATICTEXT3, _("Texto Descifrado"), wxPoint(10, 176), wxDefaultSize, 0, _("WxStaticText3"));
+	WxStaticText3->SetForegroundColour(wxColour(0,0,255));
+	WxStaticText3->SetFont(wxFont(14, wxSWISS, wxNORMAL, wxBOLD, false));
 
-	PCifrado = new wxTextCtrl(this, ID_PCIFRADO, wxEmptyString, wxPoint(67, 43), wxSize(325, 114), wxTE_MULTILINE, wxDefaultValidator, _("PCifrado"));
-	PCifrado->SetMaxLength(0);
-	PCifrado->SetFocus();
-	PCifrado->SetInsertionPointEnd();
-	PCifrado->SetForegroundColour(wxColour(0,0,0));
-	PCifrado->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, _("Segoe UI Semibold")));
+	WxStaticText2 = new wxStaticText(this, ID_WXSTATICTEXT2, _("Nº de Desplazamiento:"), wxPoint(67, 77), wxDefaultSize, 0, _("WxStaticText2"));
+	WxStaticText2->SetForegroundColour(wxColour(255,255,255));
+	WxStaticText2->SetFont(wxFont(10, wxSWISS, wxNORMAL, wxBOLD, false));
 
-	Numero = new wxTextCtrl(this, ID_NUMERO, _(""), wxPoint(158, 11), wxSize(21, 19), 0, wxDefaultValidator, _("Numero"));
+	WxStaticText1 = new wxStaticText(this, ID_WXSTATICTEXT1, _("Cifrado de Cesar"), wxPoint(213, 13), wxDefaultSize, 0, _("WxStaticText1"));
+	WxStaticText1->SetForegroundColour(wxColour(0,0,255));
+	WxStaticText1->SetFont(wxFont(18, wxSWISS, wxNORMAL, wxBOLD, false));
 
-	WxButton2 = new wxButton(this, ID_WXBUTTON2, _("Descifrar texto"), wxPoint(290, 8), wxSize(108, 25), wxNO_BORDER, wxDefaultValidator, _("WxButton2"));
-	WxButton2->SetForegroundColour(wxColour(255,255,255));
-	WxButton2->SetBackgroundColour(wxColour(_("BLUE")));
-	WxButton2->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false));
+	Pdecifrado = new wxTextCtrl(this, ID_PDECIFRADO, wxEmptyString, wxPoint(167, 310), wxSize(430, 155), wxTE_MULTILINE, wxDefaultValidator, _("Pdecifrado"));
+	Pdecifrado->SetMaxLength(0);
+	Pdecifrado->SetFocus();
+	Pdecifrado->SetInsertionPointEnd();
 
-	WxButton1 = new wxButton(this, ID_WXBUTTON1, _("Cifrar texto"), wxPoint(194, 7), wxSize(81, 25), wxNO_BORDER, wxDefaultValidator, _("WxButton1"));
-	WxButton1->SetForegroundColour(wxColour(255,255,255));
-	WxButton1->SetBackgroundColour(wxColour(_("LIME GREEN")));
-	WxButton1->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false));
+	Pcifrado = new wxTextCtrl(this, ID_PCIFRADO, wxEmptyString, wxPoint(169, 116), wxSize(427, 161), wxTE_MULTILINE, wxDefaultValidator, _("Pcifrado"));
+	Pcifrado->SetMaxLength(0);
+	Pcifrado->SetFocus();
+	Pcifrado->SetInsertionPointEnd();
+
+	wxNumer = new wxTextCtrl(this, ID_WXNUMER, _(""), wxPoint(220, 78), wxSize(21, 19), 0, wxDefaultValidator, _("wxNumer"));
+
+	Bt_Deco = new wxButton(this, ID_BT_DECO, _("Descifrar texto"), wxPoint(434, 75), wxSize(108, 25), wxNO_BORDER, wxDefaultValidator, _("Bt_Deco"));
+	Bt_Deco->SetForegroundColour(wxColour(255,255,255));
+	Bt_Deco->SetBackgroundColour(wxColour(_("BLUE")));
+	Bt_Deco->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false));
+
+	Bt_Codificar = new wxButton(this, ID_BT_CODIFICAR, _("Cifrar texto"), wxPoint(298, 75), wxSize(81, 25), wxNO_BORDER, wxDefaultValidator, _("Bt_Codificar"));
+	Bt_Codificar->SetForegroundColour(wxColour(255,255,255));
+	Bt_Codificar->SetBackgroundColour(wxColour(_("LIME GREEN")));
+	Bt_Codificar->SetFont(wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false));
 
 	SetTitle(_("Cifrado de cesar grafico"));
 	SetIcon(wxNullIcon);
-	SetSize(217,88,466,349);
+	SetSize(92,19,637,521);
 	Center();
 	
 	////GUI Items Creation End
@@ -112,49 +125,79 @@ void Cifrado_de_cesar_graficoFrm::Mnusalir1010Click(wxCommandEvent& event)
 	Close();
 }
 
-void Codificar(int numero, wxString & codigo){
-    
-    for(int i = 0; i < codigo.length(); i++){ 
-        if(codigo[i] >= 'A' && codigo[i] <= 'Z'){ 
-           	if((codigo[i], + numero)>'Z'){ 
-              	codigo[i] = 'A' - 'Z' + (codigo[i], + numero-1); 
-            }else if((codigo[i], + numero<'A')){ 
-                codigo[i] = 'Z' - 'A' + (codigo[i], + numero+1); 
-            }else{ 
-			 codigo[i] = numero; 
-            	} 
-        } 
-    }
+void Cifrado_de_cesar_graficoFrm::wxNumerUpdated(wxCommandEvent& event)
+{
+	if(wxNumer->GetValue() !=""){
+	   Bt_Codificar->Enable(true);
+    }else{
+        Bt_Codificar->Enable(false);
+        }
 }
 
-void Cifrado_de_cesar_graficoFrm::WxButton1Click(wxCommandEvent& event)
+
+void Cifrado_de_cesar_graficoFrm::PcifradoUpdated(wxCommandEvent& event)
 {
-    std::ofstream Arch("Archivito.txt");
-    fflush(stdin);
-    
-    if(Arch.is_open()){
+	// insert your code here
+}
+
+
+void Cifrado_de_cesar_graficoFrm::Bt_CodificarClick(wxCommandEvent& event)
+{
+	wxString codigo;
+    char temporal;
+	int numero;
+    int longitud;
         
-        Arch<<codigo;
-    Codificar(numero, codigo);
-    }
-}              
-void decodificar(int numero, wxString & codigo){ 
-	
-    for(int i = 0; i < codigo.length(); i++){ 
-        if(codigo[i] >= 'A' && codigo[i] <= 'Z'){ 
-            if((codigo[i], - numero)>'Z'){ 
-                    codigo[i] = 'A' - 'Z' + (codigo[i], - numero+1); 
-            }else if((codigo[i], - numero)<'A'){ 
-                codigo[i] = 'Z' - 'A' + (codigo[i], - numero-1); 
-            }else{ 
-        		codigo[i] = numero; 
-            } 
-        } 
+    numero=wxAtoi(wxNumer->GetValue());
+    codigo=Pcifrado->GetValue();
+    longitud = codigo.size();
+    
+	for(int i=0; i<longitud; i++){
+        if(codigo[i]>96 && codigo[i]<123){
+            
+            temporal=codigo[i];
+            temporal = temporal -((numero%26));
+			codigo[i]=temporal;
+			
+			if(codigo[i]<97){
+                temporal = codigo[i];
+                temporal = temporal + 26;
+				codigo[i]=temporal;
+			}
+			
+			Pdecifrado->SetValue(codigo);
+
+        }
     }
 }
 
 
-void Cifrado_de_cesar_graficoFrm::WxButton2Click(wxCommandEvent& event)
+void Cifrado_de_cesar_graficoFrm::Bt_DecoClick(wxCommandEvent& event)
 {
-	decodificar(numero, codigo);
+	wxString codigo;
+    char temporal;
+	int numero;
+    int longitud;
+        
+    numero=wxAtoi(wxNumer->GetValue());
+    codigo=Pdecifrado->GetValue();
+    longitud = codigo.size();
+    
+	for(int i=0; i<longitud; i++){
+        if(codigo[i]>96 && codigo[i]<123){
+            
+            temporal=codigo[i];
+            temporal = temporal -((numero%26));
+			codigo[i]=temporal;
+			
+			if(codigo[i]<97){
+                temporal = codigo[i];
+                temporal = temporal + 26;
+				codigo[i]=temporal;
+			}
+			
+			Pcifrado->SetValue(codigo);
+
+        }
+    }
 }

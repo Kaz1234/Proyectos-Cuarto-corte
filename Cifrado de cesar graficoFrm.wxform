@@ -1,12 +1,17 @@
 object frmNewForm: TfrmNewForm
-  Left = 339
-  Top = 49
+  Left = 92
+  Top = 19
   AutoScroll = False
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cifrado de cesar grafico'
-  ClientHeight = 311
-  ClientWidth = 450
+  ClientHeight = 483
+  ClientWidth = 621
   Color = clAppWorkSpace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clBlack
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
   OldCreateOrder = True
   PopupMenu = DesignerPopup.Owner
   Visible = True
@@ -23,7 +28,8 @@ object frmNewForm: TfrmNewForm
   Wx_Center = True
   Wx_Hidden = False
   Wx_SizeToContents = True
-  Wx_GeneralStyle = []
+  Wx_Filename = 'Images/Cifrado_de_cesar_graficoFrm_frmNewForm_XPM.xpm'
+  Wx_GeneralStyle = [wxNO_BORDER]
   Wx_DialogStyle = [wxCAPTION, wxSYSTEM_MENU, wxDIALOG_NO_PARENT, wxMINIMIZE_BOX, wxCLOSE_BOX]
   Wx_DesignerType = dtWxFrame
   Wx_Border = 0
@@ -31,9 +37,9 @@ object frmNewForm: TfrmNewForm
   isAuimanagerAvailable = False
   PixelsPerInch = 96
   TextHeight = 15
-  object WxButton1: TWxButton
-    Left = 194
-    Top = 7
+  object Bt_Codificar: TWxButton
+    Left = 298
+    Top = 75
     Width = 81
     Height = 25
     Caption = 'Cifrar texto'
@@ -44,6 +50,7 @@ object frmNewForm: TfrmNewForm
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    EVT_BUTTON = 'Bt_CodificarClick'
     Wx_BKColor = clBlack
     Wx_ButtonStyle = []
     Wx_Class = 'wxButton'
@@ -55,7 +62,7 @@ object frmNewForm: TfrmNewForm
     Wx_FGColor = clBlack
     Wx_GeneralStyle = [wxNO_BORDER]
     Wx_Hidden = False
-    Wx_IDName = 'ID_WXBUTTON1'
+    Wx_IDName = 'ID_BT_CODIFICAR'
     Wx_IDValue = 1011
     InvisibleBGColorString = 'STD:LIME GREEN'
     InvisibleFGColorString = 'CUS:255,255,255'
@@ -77,9 +84,9 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
-  object WxButton2: TWxButton
-    Left = 290
-    Top = 8
+  object Bt_Deco: TWxButton
+    Left = 434
+    Top = 75
     Width = 108
     Height = 25
     Caption = 'Descifrar texto'
@@ -90,6 +97,7 @@ object frmNewForm: TfrmNewForm
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
+    EVT_BUTTON = 'Bt_DecoClick'
     Wx_BKColor = clBlack
     Wx_ButtonStyle = []
     Wx_Class = 'wxButton'
@@ -101,7 +109,7 @@ object frmNewForm: TfrmNewForm
     Wx_FGColor = clBlack
     Wx_GeneralStyle = [wxNO_BORDER]
     Wx_Hidden = False
-    Wx_IDName = 'ID_WXBUTTON2'
+    Wx_IDName = 'ID_BT_DECO'
     Wx_IDValue = 1012
     InvisibleBGColorString = 'STD:BLUE'
     InvisibleFGColorString = 'CUS:255,255,255'
@@ -123,15 +131,16 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
-  object WxEdit1: TWxEdit
-    Left = 158
-    Top = 11
+  object wxNumer: TWxEdit
+    Left = 220
+    Top = 78
     Width = 21
     Height = 19
     BevelInner = bvNone
     BevelOuter = bvNone
     AutoSize = False
     TabOrder = 3
+    EVT_TEXT = 'wxNumerUpdated'
     Wx_BGColor = clBlack
     Wx_Class = 'wxTextCtrl'
     Wx_ControlOrientation = wxControlVertical
@@ -139,7 +148,7 @@ object frmNewForm: TfrmNewForm
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
     Wx_Hidden = False
-    Wx_IDName = 'ID_WXEDIT1'
+    Wx_IDName = 'ID_WXNUMER'
     Wx_IDValue = 1014
     Wx_MaxLength = 0
     Wx_PaneCaption = 'WxEdit1'
@@ -159,21 +168,22 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
-  object WxMemo1: TWxMemo
-    Left = 67
-    Top = 40
-    Width = 325
-    Height = 114
+  object Pcifrado: TWxMemo
+    Left = 169
+    Top = 116
+    Width = 427
+    Height = 161
     BevelInner = bvNone
     BevelOuter = bvNone
     TabOrder = 4
+    EVT_TEXT = 'PcifradoUpdated'
     Wx_BGColor = clBlack
     Wx_Class = 'wxTextCtrl'
     Wx_ControlOrientation = wxControlVertical
     Wx_EditStyle = [wxTE_MULTILINE]
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
-    Wx_IDName = 'ID_WXMEMO1'
+    Wx_IDName = 'ID_PCIFRADO'
     Wx_IDValue = 1015
     Wx_MaxLength = 0
     Wx_PaneCaption = 'WxMemo1'
@@ -193,11 +203,11 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
-  object WxMemo2: TWxMemo
-    Left = 67
-    Top = 168
-    Width = 325
-    Height = 121
+  object Pdecifrado: TWxMemo
+    Left = 167
+    Top = 310
+    Width = 430
+    Height = 155
     BevelInner = bvNone
     BevelOuter = bvNone
     TabOrder = 5
@@ -207,7 +217,7 @@ object frmNewForm: TfrmNewForm
     Wx_EditStyle = [wxTE_MULTILINE]
     Wx_FGColor = clBlack
     Wx_GeneralStyle = []
-    Wx_IDName = 'ID_WXMEMO2'
+    Wx_IDName = 'ID_PDECIFRADO'
     Wx_IDValue = 1016
     Wx_MaxLength = 0
     Wx_PaneCaption = 'WxMemo2'
@@ -228,16 +238,18 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_Y_Pos = 0
   end
   object WxStaticText1: TWxStaticText
-    Left = 41
-    Top = 11
-    Width = 110
-    Height = 19
-    Caption = 'N'#176' Desplazamiento'
+    Left = 213
+    Top = 13
+    Width = 192
+    Height = 36
+    Caption = 'Cifrado de Cesar'
+    Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -12
+    Font.Color = clBlue
+    Font.Height = -24
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
     TabOrder = 6
     Wx_BGColor = clBlack
@@ -247,8 +259,10 @@ object frmNewForm: TfrmNewForm
     Wx_GeneralStyle = []
     Wx_Hidden = False
     Wx_IDName = 'ID_WXSTATICTEXT1'
-    Wx_IDValue = 1017
+    Wx_IDValue = 1021
     Wx_LabelStyle = []
+    InvisibleBGColorString = 'DEF:'
+    InvisibleFGColorString = 'CUS:0,0,255'
     Wx_PaneCaption = 'WxStaticText1'
     Wx_PaneName = 'WxStaticText1_Pane'
     Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
@@ -266,9 +280,129 @@ object frmNewForm: TfrmNewForm
     Wx_Floating_X_Pos = 0
     Wx_Floating_Y_Pos = 0
   end
+  object WxStaticText2: TWxStaticText
+    Left = 67
+    Top = 77
+    Width = 146
+    Height = 21
+    Caption = 'N'#186' de Desplazamiento:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 7
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT2'
+    Wx_IDValue = 1023
+    Wx_LabelStyle = []
+    InvisibleFGColorString = 'CUS:255,255,255'
+    Wx_PaneCaption = 'WxStaticText2'
+    Wx_PaneName = 'WxStaticText2_Pane'
+    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+    Wx_Aui_Dockable_Direction = []
+    Wx_Aui_Pane_Style = []
+    Wx_Aui_Pane_Buttons = []
+    Wx_BestSize_Height = 0
+    Wx_BestSize_Width = 0
+    Wx_MinSize_Height = 0
+    Wx_MinSize_Width = 0
+    Wx_MaxSize_Height = 0
+    Wx_MaxSize_Width = 0
+    Wx_Floating_Height = 0
+    Wx_Floating_Width = 0
+    Wx_Floating_X_Pos = 0
+    Wx_Floating_Y_Pos = 0
+  end
+  object WxStaticText3: TWxStaticText
+    Left = 10
+    Top = 176
+    Width = 155
+    Height = 29
+    Caption = 'Texto Descifrado'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 8
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT3'
+    Wx_IDValue = 1024
+    Wx_LabelStyle = []
+    InvisibleFGColorString = 'CUS:0,0,255'
+    Wx_PaneCaption = 'WxStaticText3'
+    Wx_PaneName = 'WxStaticText3_Pane'
+    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+    Wx_Aui_Dockable_Direction = []
+    Wx_Aui_Pane_Style = []
+    Wx_Aui_Pane_Buttons = []
+    Wx_BestSize_Height = 0
+    Wx_BestSize_Width = 0
+    Wx_MinSize_Height = 0
+    Wx_MinSize_Width = 0
+    Wx_MaxSize_Height = 0
+    Wx_MaxSize_Width = 0
+    Wx_Floating_Height = 0
+    Wx_Floating_Width = 0
+    Wx_Floating_X_Pos = 0
+    Wx_Floating_Y_Pos = 0
+  end
+  object WxStaticText4: TWxStaticText
+    Left = 32
+    Top = 375
+    Width = 126
+    Height = 29
+    Caption = 'Texto Cifrado'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 9
+    Wx_BGColor = clBlack
+    Wx_Class = 'wxStaticText'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_WXSTATICTEXT4'
+    Wx_IDValue = 1025
+    Wx_LabelStyle = []
+    InvisibleFGColorString = 'CUS:0,0,255'
+    Wx_PaneCaption = 'WxStaticText4'
+    Wx_PaneName = 'WxStaticText4_Pane'
+    Wx_Aui_Dock_Direction = wxAUI_DOCK_NONE
+    Wx_Aui_Dockable_Direction = []
+    Wx_Aui_Pane_Style = []
+    Wx_Aui_Pane_Buttons = []
+    Wx_BestSize_Height = 0
+    Wx_BestSize_Width = 0
+    Wx_MinSize_Height = 0
+    Wx_MinSize_Width = 0
+    Wx_MaxSize_Height = 0
+    Wx_MaxSize_Width = 0
+    Wx_Floating_Height = 0
+    Wx_Floating_Width = 0
+    Wx_Floating_X_Pos = 0
+    Wx_Floating_Y_Pos = 0
+  end
   object WxMenuBar1: TWxMenuBar
-    Left = 422
-    Top = 285
+    Left = 3
+    Top = 452
     Width = 28
     Height = 27
     TabOrder = 0
